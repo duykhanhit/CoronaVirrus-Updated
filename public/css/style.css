@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+h1, h2 {
+    text-align: center;
+}
+
+.list {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.canhiem, .tuvong, .binhphuc {
+    height: 200px;
+    width: 200px;
+    border-radius: 50% 50%;
+    color: white;
+    line-height: 200px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.note {
+    margin-top: 20px;
+}
+
+.canhiem-note, .tuvong-note, .binhphuc-note {
+    padding: 10px;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+}
+
+.red {
+    background-color: red;
+}
+.green {
+    background-color: green;
+}
+.blue {
+    background-color: blue;
+}

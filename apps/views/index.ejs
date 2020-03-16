@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Covid-19</title>
+</head>
+<body>
+    <h1>THỐNG KÊ TÌNH HÌNH COVID-19</h1>
+    <h2>Tình hình thế giới</h2>
+    <div class="list">   
+        <div class="canhiem blue"><%= body.data.global.cases %></div>
+        <div class="tuvong red"><%= body.data.global.deaths %></div>
+        <div class="binhphuc green"><%= body.data.global.recovered %></div>
+    </div>
+    <h2>Tình hình Việt Nam</h2>
+    <div class="list">   
+        <div class="canhiem blue"><%= body.data.vietnam.cases %></div>
+        <div class="tuvong red"><%= body.data.vietnam.deaths %></div>
+        <div class="binhphuc green"><%= body.data.vietnam.recovered %></div>
+    </div>
+
+
+    <div class="note">
+        <div class="canhiem-note blue">Số ca nhiễm</div>
+        <div class="tuvong-note red">Số ca tử vong</div>
+        <div class="binhphuc-note green">Số ca bình phục</div>
+    </div>
+</body>
+</html>

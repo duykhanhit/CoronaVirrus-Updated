@@ -1,31 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/style.css">
-    <title>Covid-19</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="shortcut icon" href="https://icons.iconarchive.com/icons/wikipedia/flags/512/VN-Vietnam-Flag-icon.png"
+        type="image/x-icon">
+    <meta property="og:image" content="https://i.imgur.com/Q3aJuUK.jpg" />
+    <title>Thống kê Covid-19</title>
 </head>
+
 <body>
-    <h1>THỐNG KÊ TÌNH HÌNH COVID-19</h1>
-    <h2>Tình hình thế giới</h2>
-    <div class="list">   
-        <div class="canhiem blue"><%= body.data.global.cases %></div>
-        <div class="tuvong red"><%= body.data.global.deaths %></div>
-        <div class="binhphuc green"><%= body.data.global.recovered %></div>
-    </div>
-    <h2>Tình hình Việt Nam</h2>
-    <div class="list">   
-        <div class="canhiem blue"><%= body.data.vietnam.cases %></div>
-        <div class="tuvong red"><%= body.data.vietnam.deaths %></div>
-        <div class="binhphuc green"><%= body.data.vietnam.recovered %></div>
+
+    <div class="alert alert-primary" role="alert">
+        <h4 class="alert-heading">Covid-19.DuyKhanhIT.Com</h4>
+        <p>Website lấy dữ liệu trực tiếp từ Corona.kompa.ai</p>
+        <hr>
+        <p class="mb-0">Rửa tay thường xuyên để loại bỏ Corona Virus nhé các bạn </p>
     </div>
 
-
-    <div class="note">
-        <div class="canhiem-note blue">Số ca nhiễm</div>
-        <div class="tuvong-note red">Số ca tử vong</div>
-        <div class="binhphuc-note green">Số ca bình phục</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <ul class="list-group">
+                    <li class="list-group-item active">Tình hình Việt Nam</li>
+                    <li class="list-group-item">Số ca nhiễm: <%= ConfirmedVN %></li>
+                    <li class="list-group-item">Số ca tử vong: <%= DeathsVN %></li>
+                    <li class="list-group-item">Số ca bình phục: <%= RecoveredVN %></li>
+                </ul>
+            </div>
+            <div class="col-sm">
+                <ul class="list-group">
+                    <li class="list-group-item active">Tình hình Thế giới</li>
+                    <li class="list-group-item">Số ca nhiễm: <%= ConfirmedG %></li>
+                    <li class="list-group-item">Số ca tử vong: <%= DeathsG %></li>
+                    <li class="list-group-item">Số ca bình phục: <%= RecoveredG %></li>
+                </ul>
+            </div>
+        </div>
     </div>
+<div class="container">
+    <h2 class="mt-4 text-center">Tình hình Việt Nam</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Thành phố</th>
+                <th scope="col">Số ca nhiễm</th>
+                <th scope="col">Số ca tử vong</th>
+                <th scope="col">Số ca bình phục</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(data) {%>
+            <% for(var i = 0; i < data.provinces.length; i++) {%>
+            <tr>
+                <th scope="row"><%= i + 1 %></th>
+                <td><%= data.provinces[i].Province_Name %></td>
+                <td><%= data.provinces[i].Confirmed %></td>
+                <td><%= data.provinces[i].Deaths %></td>
+                <td><%= data.provinces[i].Recovered %></td>
+            </tr>
+            <%}%>
+            <%}%>
+        </tbody>
+    </table>
+
+    <h2 class="mt-4 text-center">Tình hình thế giới</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Quốc gia</th>
+                <th scope="col">Số ca nhiễm</th>
+                <th scope="col">Số ca tử vong</th>
+                <th scope="col">Số ca bình phục</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(data) {%>
+            <% for(var i = 0; i < data.countries.length; i++) {%>
+            <tr>
+                <th scope="row"><%= i + 1 %></th>
+                <td><%= data.countries[i].Country_Region %></td>
+                <td><%= data.countries[i].Confirmed %></td>
+                <td><%= data.countries[i].Deaths %></td>
+                <td><%= data.countries[i].Recovered %></td>
+            </tr>
+            <%}%>
+            <%}%>
+        </tbody>
+    </table>
+</div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

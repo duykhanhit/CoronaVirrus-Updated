@@ -9,6 +9,8 @@
   "author": "Duy Khánh",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
+    "co": "^4.6.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "request": "^2.88.2"
